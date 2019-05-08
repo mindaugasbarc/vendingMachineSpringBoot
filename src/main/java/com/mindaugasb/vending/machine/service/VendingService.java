@@ -7,6 +7,11 @@ import java.util.Set;
 
 public interface VendingService {
 
-   List<Item> fetchAllItems();
-   Item fetchItem(long id);
+    List<Item> fetchAllItems();
+
+    Item fetchItem(long id);
+
+    void dispenseItem(long id);
+
+    void addMoney(double amount);
 }
