@@ -13,7 +13,7 @@ public class VendingMachineExceptionHandler {
 
     @ExceptionHandler(value = InsufficientBalanceException.class)
     public ResponseEntity<String> handleInsufficientBalanceException(InsufficientBalanceException exception) {
-        return new ResponseEntity<>("you do not hauve enough money to buy this, please insert coins",
+        return new ResponseEntity<>("you do not have enough money to buy this, please insert coins",
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

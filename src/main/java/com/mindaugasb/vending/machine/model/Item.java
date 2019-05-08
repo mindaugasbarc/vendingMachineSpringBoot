@@ -1,5 +1,7 @@
 package com.mindaugasb.vending.machine.model;
 
+import com.mindaugasb.vending.machine.exception.OutOfStockException;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -15,36 +17,47 @@ public class Item {
     private int quantity;
     private double price;
 
-    public long getId() {
-        return id;
+    public Item(String name, int quantity, double price) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public long getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getQuantity() {
         return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public double getPrice() {
         return price;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public boolean consumeItem() {
+        if (quantity > 0) {
+            quantity--;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

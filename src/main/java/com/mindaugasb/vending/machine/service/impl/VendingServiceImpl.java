@@ -41,4 +41,9 @@ public class VendingServiceImpl implements VendingService {
         machineState.chargeMoney(item.getPrice());
         machineActions.dispense(item);
     }
+
+    @Override
+    public void addMoney(double amount) {
+        machineState.addMoney(amount);
+    }
 }
