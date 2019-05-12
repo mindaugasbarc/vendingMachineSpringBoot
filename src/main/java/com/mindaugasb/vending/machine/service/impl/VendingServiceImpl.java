@@ -8,6 +8,7 @@ import com.mindaugasb.vending.machine.service.VendingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -36,6 +37,7 @@ public class VendingServiceImpl implements VendingService {
     }
 
     @Override
+    @Transactional
     public void dispenseItem(long id) {
         Item item = fetchItem(id);
         machineState.chargeMoney(item.getPrice());

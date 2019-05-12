@@ -1,6 +1,8 @@
 package com.mindaugasb.vending;
 
+import com.mindaugasb.vending.machine.model.Balance;
 import com.mindaugasb.vending.machine.model.Item;
+import com.mindaugasb.vending.machine.repository.BalanceRepository;
 import com.mindaugasb.vending.machine.repository.VendingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,7 +13,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class VendingApplication implements CommandLineRunner {
 
 	@Autowired
-	VendingRepository vendingRepository;
+	private VendingRepository vendingRepository;
+
+	@Autowired
+	private BalanceRepository balanceRepository;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(VendingApplication.class, args);
@@ -21,5 +27,6 @@ public class VendingApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		vendingRepository.save(new Item("snickers", 1, 2.0));
 		vendingRepository.save(new Item("coca cola", 10, 1));
+		balanceRepository.save(new Balance(5));
 	}
 }
